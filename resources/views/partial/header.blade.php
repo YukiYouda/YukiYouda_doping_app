@@ -11,9 +11,9 @@
                 <a class="nav-link" href="{{ route('supplements.index') }}">Home <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="カテゴリー">
-            <input class="form-control mr-sm-2" type="search" placeholder="サプリメントの名前">
+        <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('supplements.index') }}">
+            <input class="form-control mr-sm-2" type="search" name="category" placeholder="カテゴリー">
+            <input class="form-control mr-sm-2" type="search" name="name" placeholder="サプリメントの名前">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
