@@ -16,11 +16,15 @@ class CreateSupplementsTable extends Migration
         Schema::create('supplements', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->price('integer');
+            $table->integer('price')->unsigned();
             $table->string('volume');
             $table->text('description');
             $table->text('img_path');
-            $table->integer('category_id');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onDelete('restrict');
             $table->timestamps();
         });
     }
