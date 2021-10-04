@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SupplementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SupplementController::class, 'index'])->name('root');
+
+Route::resource('supplements', SupplementController::class)->only(['index', 'show']);
