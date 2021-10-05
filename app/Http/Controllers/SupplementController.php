@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Models\Supplement;
 
@@ -21,6 +22,7 @@ class SupplementController extends Controller
 
     public function show(Supplement $supplement)
     {
-        return view('supplements.show', compact('supplement'));
+        $reviews = Review::where('supplement_id', $supplement->id)->get();
+        return view('supplements.show', compact('supplement', 'reviews'));
     }
 }

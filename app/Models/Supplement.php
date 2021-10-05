@@ -16,8 +16,20 @@ class Supplement extends Model
             $query->where('name', 'like', '%' . $params['name'] . '%');
         }
         if (!empty($params['category'])) {
-            $query->where('category', 'like', '%' . $params['category'] . '%');
+            $query->whereHas('category', function ($q) use ($params) {
+                $q->where('name', 'like', '%' . $params['category'] . '%');
+            });
         }
         return $query;
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(\App\Models\Category::class);
+    }
+
+    public function review()
+    {
+        return $this->hasMany(\App\Models\Review::class);
     }
 }

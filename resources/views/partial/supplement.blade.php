@@ -9,6 +9,7 @@
             </h3>
         </div>
         <div>
+            <div>カテゴリー: {{ $supplement->category->name }}</div>
             <div>￥ {{ $supplement->price }}</div>
             <div>内容量: {{ $supplement->volume }}</div>
         </div>

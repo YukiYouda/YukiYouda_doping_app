@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
+
+    public function supplement()
+    {
+        return $this->belongsTo(\App\Models\Supplement::class);
+    }
 }
