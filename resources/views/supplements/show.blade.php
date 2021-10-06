@@ -80,11 +80,22 @@
                     </tr>
                 </tbody>
             </table>
-            <a href="{{ route('supplements.reviews.edit', [$review, $supplement]) }}">編集</a>
+            <div class="d-flex">
+                <a href="/supplements/{{ $supplement->id }}/reviews/{{ $review->id }}/edit">編集</a>
+                <div class="ml-2 mb-4"> 
+                    <form action="/supplements/{{ $supplement->id }}/reviews/{{ $review->id }}" method="post"
+                        name="form1">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" onclick="if(!confirm('削除していいですか?')){return false}">削除する</button>
+                    </form>
+                </div>
+            </div>
         @endforeach
     @endif
     <div class="mt-4 mb-4">
-        <a href="{{ route('supplements.reviews.create', $supplement) }}"><button type="button">新規登録</button></a>
+        <a href="/supplements/{{ $supplement->id }}/reviews/create?id={{ $supplement->id }}"><button
+                type="button">新規登録</button></a>
     </div>
     <a href="{{ route('supplements.index') }}">戻る</a>
 @endsection

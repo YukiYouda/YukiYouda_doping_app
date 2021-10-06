@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1>編集フォーム</h1>
+    <h1>更新フォーム</h1>
 
     <form action="{{ route('supplements.update', $supplement) }}" method="post">
         @csrf
