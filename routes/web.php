@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\SupplementController;
+use App\Http\Controllers\ReviewController;
+use App\Models\Review;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SupplementController::class, 'index'])->name('root');
 
-Route::resource('supplements', SupplementController::class)->only(['index', 'show']);
+Route::resource('supplements', SupplementController::class);
+
+Route::resource('supplements.reviews', ReviewController::class)->except(['index', 'show']);
